@@ -1,0 +1,1901 @@
+{
+  "package": "DropboxBusiness",
+  "tagline": "DropboxBusiness API",
+  "description": "DropboxBusiness",
+  "image": "http:\/\/logo.clearbit.com\/dropbox.com",
+  "repo": "https:\/\/github.com\/RapidSoftwareSolutions\/Marketplace-DropboxBusiness-Package",
+  "keywords": [
+  ],
+  "accounts": {
+    "domain": "dropbox.com",
+    "credentials": [
+      "apiKey"
+    ]
+  },
+  "blocks": [
+    {
+      "name": "getAccessToken",
+      "description": "Generates user access token",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "Api key obtained from Dropbox",
+          "required": true
+        },
+        {
+          "name": "apiSecret",
+          "type": "credentials",
+          "info": "Api secret obtained from Dropbox",
+          "required": true
+        },
+        {
+          "name": "redirectUri",
+          "type": "String",
+          "info": "Redirect uri set for your app",
+          "required": true
+        },
+        {
+          "name": "code",
+          "type": "String",
+          "info": "Code provided by user",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "revokeAccessToken",
+      "description": "Revokes user access tokens",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token to revoke",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getSingleMemberDevices",
+      "description": "List all device sessions of a team's member.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "teamMemberId",
+          "type": "String",
+          "info": "The team's member id",
+          "required": true
+        },
+        {
+          "name": "includeWebSessions",
+          "type": "Boolean",
+          "info": "Whether to list web sessions of the team's member The default for this field is True.",
+          "required": false
+        },
+        {
+          "name": "includeDesktopClients",
+          "type": "Boolean",
+          "info": "Whether to list linked desktop devices of the team's member The default for this field is True.",
+          "required": false
+        },
+        {
+          "name": "includeMobileClients",
+          "type": "Boolean",
+          "info": "Whether to list linked mobile devices of the team's member The default for this field is True.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getMembersDevices",
+      "description": "List all device sessions of a team's member.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "cursor",
+          "type": "String",
+          "info": "At the first call to the getMembersDevices the cursor shouldn't be passed. Then, if the result of the call includes a cursor, the following requests should include the received cursors in order to receive the next sub list of team devices",
+          "required": false
+        },
+        {
+          "name": "includeWebSessions",
+          "type": "Boolean",
+          "info": "Whether to list web sessions of the team's member The default for this field is True.",
+          "required": false
+        },
+        {
+          "name": "includeDesktopClients",
+          "type": "Boolean",
+          "info": "Whether to list linked desktop devices of the team's member The default for this field is True.",
+          "required": false
+        },
+        {
+          "name": "includeMobileClients",
+          "type": "Boolean",
+          "info": "Whether to list linked mobile devices of the team's member The default for this field is True.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "revokeSingleDeviceWebSession",
+      "description": "Revoke a web session of a team's member",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "teamMemberId",
+          "type": "String",
+          "info": "The unique id of the member owning the device",
+          "required": true
+        },
+        {
+          "name": "sessionId",
+          "type": "String",
+          "info": "The session id",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "revokeSingleDeviceMobileSession",
+      "description": "Unlink a linked mobile device",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "teamMemberId",
+          "type": "String",
+          "info": "The unique id of the member owning the device",
+          "required": true
+        },
+        {
+          "name": "sessionId",
+          "type": "String",
+          "info": "The session id",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "revokeSingleDeviceDesktopSession",
+      "description": "Unlink a linked desktop device",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "teamMemberId",
+          "type": "String",
+          "info": "The unique id of the member owning the device",
+          "required": true
+        },
+        {
+          "name": "sessionId",
+          "type": "String",
+          "info": "The session id",
+          "required": true
+        },
+        {
+          "name": "deleteOnUnlink",
+          "type": "Boolean",
+          "info": "Whether to delete all files of the account (this is possible only if supported by the desktop client and will be made the next time the client access the account) The default for this field is False.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "revokeDevicesSession",
+      "description": "Unlink a linked desktop device",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "revokeDevices",
+          "type": "JSON",
+          "info": "List of devices. For example: {\"web_session\" : {\"session_id\": \"123\", \"team_member_id\" : \"321\"}, \"mobile_client\" : {\"session_id\": \"123\", \"team_member_id\" : \"321\"}, \"desktop_client\" : {\"session_id\": \"123\", \"team_member_id\" : \"321\", \"delete_on_unlink\" : true}}",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getTeam",
+      "description": "Retrieves information about a team.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "createGroup",
+      "description": "Creates a new, empty group, with a requested name.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "groupName",
+          "type": "String",
+          "info": "Group name.",
+          "required": true
+        },
+        {
+          "name": "groupExternalId",
+          "type": "String",
+          "info": "The creator of a team can associate an arbitrary external ID to the group.",
+          "required": false
+        },
+        {
+          "name": "groupManagementType",
+          "type": "String",
+          "info": "Whether the team can be managed by selected users, or only by team admins. Possible values: user_managed, company_managed, system_managed.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "deleteGroup",
+      "description": "Deletes a group. The group is deleted immediately. However the revoking of group-owned resources may take additional time.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "groupId",
+          "type": "String",
+          "info": "External ID of the group.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getSingleGroup",
+      "description": "Retrieves information about one group",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "groupId",
+          "type": "String",
+          "info": "External ID of the group.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getGroups",
+      "description": "Retrieves information about several groups",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "groupIds",
+          "type": "Array",
+          "info": "External IDs of groups.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getGroupJobStatus",
+      "description": "Retrieves information about status of any of group job",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "groupJobId",
+          "type": "String",
+          "info": "Id of the asynchronous job. This is the value of a response returned from the method that launched the job",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getTeamGroups",
+      "description": "Lists groups on a team.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "limit",
+          "type": "Number",
+          "info": "Number of results to return per call. The default for this field is 1000.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "paginateTeamGroups",
+      "description": "Use this to paginate through all groups.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "cursor",
+          "type": "String",
+          "info": "Indicates from what point to get the next set of groups.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "addGroupMember",
+      "description": "Adds member to a group.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "groupId",
+          "type": "String",
+          "info": "External ID of the group.",
+          "required": true
+        },
+        {
+          "name": "memberIdType",
+          "type": "String",
+          "info": "Type of user id. Possible values: team_member_id, external_id, email.",
+          "required": true
+        },
+        {
+          "name": "memberId",
+          "type": "String",
+          "info": "Id of the user.",
+          "required": true
+        },
+        {
+          "name": "accessType",
+          "type": "String",
+          "info": "Access type. Possible values: member, owner.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getGroupMembers",
+      "description": "Lists members of a group.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "groupId",
+          "type": "String",
+          "info": "External ID of the group.",
+          "required": true
+        },
+        {
+          "name": "limit",
+          "type": "Number",
+          "info": "Number of results to return per call. The default for this field is 1000.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "paginateGroupMembers",
+      "description": "Use this to paginate through all members of the group.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "cursor",
+          "type": "String",
+          "info": "Indicates from what point to get the next set of groups.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "removeGroupMembers",
+      "description": "Removes members from a group..",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "groupId",
+          "type": "String",
+          "info": "External ID of the group.",
+          "required": true
+        },
+        {
+          "name": "users",
+          "type": "Array",
+          "info": "List of users to be removed from the group. Example [{\".tag\" : \"email\", \"email\" : \"justin@emaple.com\" }] ",
+          "required": true
+        },
+        {
+          "name": "returnMembers",
+          "type": "Boolean",
+          "info": "Whether to return the list of members in the group. Note that the default value will cause all the group members to be returned in the response. This may take a long time for large groups. The default for this field is True.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "setGroupMemberAccessType",
+      "description": "Sets a member's access type in a group.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "groupId",
+          "type": "String",
+          "info": "External ID of the group.",
+          "required": true
+        },
+        {
+          "name": "memberIdType",
+          "type": "String",
+          "info": "Type of user id. Possible values: team_member_id, external_id, email.",
+          "required": true
+        },
+        {
+          "name": "memberId",
+          "type": "String",
+          "info": "Id of the user.",
+          "required": true
+        },
+        {
+          "name": "accessType",
+          "type": "String",
+          "info": "Access type. Possible values: member, owner.",
+          "required": true
+        },
+        {
+          "name": "returnMembers",
+          "type": "Boolean",
+          "info": "Whether to return the list of members in the group. Note that the default value will cause all the group members to be returned in the response. This may take a long time for large groups. The default for this field is True.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "updateSingleGroup",
+      "description": "Updates a group's name and/or external ID.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "groupId",
+          "type": "String",
+          "info": "External ID of the group.",
+          "required": true
+        },
+        {
+          "name": "newGroupName",
+          "type": "String",
+          "info": "New group name.",
+          "required": false
+        },
+        {
+          "name": "newGroupExternalId",
+          "type": "String",
+          "info": "New arbitrary external ID to the group.",
+          "required": false
+        },
+        {
+          "name": "newGroupManagementType",
+          "type": "String",
+          "info": "Whether the team can be managed by selected users, or only by team admins. Possible values: user_managed, company_managed, system_managed.",
+          "required": false
+        },
+        {
+          "name": "returnMembers",
+          "type": "Boolean",
+          "info": "Whether to return the list of members in the group. Note that the default value will cause all the group members to be returned in the response. This may take a long time for large groups. The default for this field is True.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getSingleMemberLinkedApps",
+      "description": "List all linked applications of the team member.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "teamMemberId",
+          "type": "String",
+          "info": "The team member id",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getMembersLinkedApps",
+      "description": "List all applications linked to the team members' accounts.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "cursors",
+          "type": "String",
+          "info": "If the result of the call includes a cursor, the following requests should include the received cursors in order to receive the next sub list of the team applications",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "revokeSingleLinkedApp",
+      "description": "Revoke a linked application of the team member",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "teamMemberId",
+          "type": "String",
+          "info": "The team member id",
+          "required": true
+        },
+        {
+          "name": "appId",
+          "type": "String",
+          "info": "The application id",
+          "required": true
+        },
+        {
+          "name": "keepAppFolder",
+          "type": "Boolean",
+          "info": "Whether to keep the application dedicated folder (in case the application uses one) The default for this field is True.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "revokeLinkedApps",
+      "description": "Revoke linked applications of the team members",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "revokeLinkedApp",
+          "type": "Array",
+          "info": "List of linked apps",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "addTeamMember",
+      "description": "Adds members to a team.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "memberEmail",
+          "type": "String",
+          "info": "Member's email",
+          "required": true
+        },
+        {
+          "name": "memberGivenName",
+          "type": "String",
+          "info": "Member's first name.",
+          "required": false
+        },
+        {
+          "name": "memberSurname",
+          "type": "String",
+          "info": "Member's last name.",
+          "required": false
+        },
+        {
+          "name": "memberExternalId",
+          "type": "String",
+          "info": "External ID for member.",
+          "required": false
+        },
+        {
+          "name": "memberPersistentId",
+          "type": "String",
+          "info": "Persistent ID for member. This field is only available to teams using persistent ID SAML configuration.",
+          "required": false
+        },
+        {
+          "name": "sendWelcomeEmail",
+          "type": "Boolean",
+          "info": "Whether to send a welcome email to the member. If send_welcome_email is false, no email invitation will be sent to the user. This may be useful for apps using single sign-on (SSO) flows for onboarding that want to handle announcements themselves. The default for this field is True.",
+          "required": false
+        },
+        {
+          "name": "memberRole",
+          "type": "String",
+          "info": "Describes which team-related admin permissions a user has. Possible values: member_only(default), support_admin, user_management_admin, team_admin",
+          "required": false
+        },
+        {
+          "name": "forceAsync",
+          "type": "Boolean",
+          "info": "Whether to force the add to happen asynchronously. The default for this field is False.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "checkAddTeamMemberStatus",
+      "description": "Use this to poll the status of the asynchronous request of addTeamMember.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "addMemberJobId",
+          "type": "String",
+          "info": "Id of the asynchronous job.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getTeamMembers",
+      "description": "Lists members of a team.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "limit",
+          "type": "Number",
+          "info": "Number of results to return per call. The default for this field is 1000.",
+          "required": false
+        },
+        {
+          "name": "includeRemoved",
+          "type": "Boolean",
+          "info": "Whether to return removed members. The default for this field is False.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getTeamMembersInfo",
+      "description": "Returns information about multiple team members.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "members",
+          "type": "Array",
+          "info": "Example: [{\".tag\": \"team_member_id\",\"team_member_id\": \"dbmid:efgh5678\"}]",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getSingleTeamMemberInfo",
+      "description": "Returns information about single team member.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "memberIdType",
+          "type": "String",
+          "info": "Argument for selecting a single user, either by team_member_id, external_id or email.",
+          "required": true
+        },
+        {
+          "name": "memberId",
+          "type": "String",
+          "info": "Id of the user.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "paginateTeamMembers",
+      "description": "Use this to paginate through all team members.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "cursor",
+          "type": "String",
+          "info": "Indicates from what point to get the next set of members.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "recoverDeletedMember",
+      "description": "Recover a deleted member.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "memberIdType",
+          "type": "String",
+          "info": "Argument for selecting a single user, either by team_member_id, external_id or email.",
+          "required": true
+        },
+        {
+          "name": "memberId",
+          "type": "String",
+          "info": "Id of the user.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "removeTeamMember",
+      "description": "Removes a member from a team.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "memberIdType",
+          "type": "String",
+          "info": "Argument for selecting a single user, either by team_member_id, external_id or email.",
+          "required": true
+        },
+        {
+          "name": "memberId",
+          "type": "String",
+          "info": "Id of the user.",
+          "required": true
+        },
+        {
+          "name": "destinationMemberIdType",
+          "type": "String",
+          "info": "Argument for selecting a single user, either by team_member_id, external_id or email.",
+          "required": false
+        },
+        {
+          "name": "destinationMemberId",
+          "type": "String",
+          "info": "If provided, files from the deleted member account will be transferred to this user.",
+          "required": false
+        },
+        {
+          "name": "adminMemberIdType",
+          "type": "String",
+          "info": "Argument for selecting a single user, either by team_member_id, external_id or email.",
+          "required": false
+        },
+        {
+          "name": "adminMemberId",
+          "type": "String",
+          "info": "If provided, errors during the transfer process will be sent via email to this user. If the destinationMemberId argument was provided, then this argument must be provided as well. ",
+          "required": false
+        },
+        {
+          "name": "wipeData",
+          "type": "Boolean",
+          "info": "If provided, controls if the user's data will be deleted on their linked devices. The default for this field is True.",
+          "required": false
+        },
+        {
+          "name": "keepAccount",
+          "type": "Boolean",
+          "info": "Downgrade the member to a Basic account. The user will retain the email address associated with their Dropbox account and data in their account that is not restricted to team members. In order to keep the account the argument wipeData should be set to False. The default for this field is False.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "checkRemoveTeamMemberStatus",
+      "description": "Use this to poll the status of the asynchronous request.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "removeTeamMemberJobId",
+          "type": "String",
+          "info": "Id of the asynchronous job. ",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "sendWelcomeEmail",
+      "description": "Sends welcome email to pending team member.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "memberIdType",
+          "type": "String",
+          "info": "Argument for selecting a single user, either by team_member_id, external_id or email.",
+          "required": true
+        },
+        {
+          "name": "memberId",
+          "type": "String",
+          "info": "Id of the user.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "updateTeamMemberPermissions",
+      "description": "Updates a team member's permissions.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "memberIdType",
+          "type": "String",
+          "info": "Argument for selecting a single user, either by team_member_id, external_id or email.",
+          "required": true
+        },
+        {
+          "name": "memberId",
+          "type": "String",
+          "info": "Id of the user.",
+          "required": true
+        },
+        {
+          "name": "newRole",
+          "type": "String",
+          "info": "Describes which team-related admin permissions a user has. Possible values: team_admin, user_management_admin, support_admin, member_only",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "updateTeamMemberProfile",
+      "description": "Updates a team member's profile.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "memberIdType",
+          "type": "String",
+          "info": "Argument for selecting a single user, either by team_member_id, external_id or email.",
+          "required": true
+        },
+        {
+          "name": "memberId",
+          "type": "String",
+          "info": "ID of the member",
+          "required": true
+        },
+        {
+          "name": "memberEmail",
+          "type": "String",
+          "info": "Member's email",
+          "required": false
+        },
+        {
+          "name": "memberGivenName",
+          "type": "String",
+          "info": "Member's first name.",
+          "required": false
+        },
+        {
+          "name": "memberSurname",
+          "type": "String",
+          "info": "Member's last name.",
+          "required": false
+        },
+        {
+          "name": "memberExternalId",
+          "type": "String",
+          "info": "External ID for member.",
+          "required": false
+        },
+        {
+          "name": "memberPersistentId",
+          "type": "String",
+          "info": "Persistent ID for member. This field is only available to teams using persistent ID SAML configuration.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "suspendMemberFromTeam",
+      "description": "Suspend a member from a team.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "memberIdType",
+          "type": "String",
+          "info": "Argument for selecting a single user, either by team_member_id, external_id or email.",
+          "required": true
+        },
+        {
+          "name": "memberId",
+          "type": "String",
+          "info": "ID of the member",
+          "required": true
+        },
+        {
+          "name": "wipeData",
+          "type": "Boolean",
+          "info": "If provided, controls if the user's data will be deleted on their linked devices. The default for this field is True.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "unsuspendMemberFromTeam",
+      "description": "Unsuspend a member from a team.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "memberIdType",
+          "type": "String",
+          "info": "Argument for selecting a single user, either by team_member_id, external_id or email.",
+          "required": true
+        },
+        {
+          "name": "memberId",
+          "type": "String",
+          "info": "ID of the member",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getTeamUsersActivityReport",
+      "description": "Retrieves reporting data about a team's user activity.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "startDate",
+          "type": "String",
+          "info": "Timestamp(format=\"%Y-%m-%d\")? Optional starting date (inclusive)",
+          "required": false
+        },
+        {
+          "name": "endDate",
+          "type": "String",
+          "info": "Timestamp(format=\"%Y-%m-%d\")? Optional ending date (exclusive) ",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getTeamLinkedDevicesReport",
+      "description": "Retrieves reporting data about a team's linked devices.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "startDate",
+          "type": "String",
+          "info": "Timestamp(format=\"%Y-%m-%d\")? Optional starting date (inclusive)",
+          "required": false
+        },
+        {
+          "name": "endDate",
+          "type": "String",
+          "info": "Timestamp(format=\"%Y-%m-%d\")? Optional ending date (exclusive) ",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getTeamMembershipReport",
+      "description": "Retrieves reporting data about a team's membership.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "startDate",
+          "type": "String",
+          "info": "Timestamp(format=\"%Y-%m-%d\")? Optional starting date (inclusive)",
+          "required": false
+        },
+        {
+          "name": "endDate",
+          "type": "String",
+          "info": "Timestamp(format=\"%Y-%m-%d\")? Optional ending date (exclusive) ",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getTeamStorageUsageReport",
+      "description": "Retrieves reporting data about a team's storage usage.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "startDate",
+          "type": "String",
+          "info": "Timestamp(format=\"%Y-%m-%d\")? Optional starting date (inclusive)",
+          "required": false
+        },
+        {
+          "name": "endDate",
+          "type": "String",
+          "info": "Timestamp(format=\"%Y-%m-%d\")? Optional ending date (exclusive) ",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "setActiveArchivedFolder",
+      "description": "Sets an archived team folder's status to active.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "teamFolderId",
+          "type": "String",
+          "info": "The ID of the team folder.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "archiveTeamFolder",
+      "description": "Sets an active team folder's status to archived and removes all folder and file members.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "teamFolderId",
+          "type": "String",
+          "info": "The ID of the team folder.",
+          "required": true
+        },
+        {
+          "name": "forceAsyncOff",
+          "type": "Boolean",
+          "info": "Whether to force the archive to happen synchronously. The default for this field is False.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "checkArchiveFolderStatus",
+      "description": "Returns the status of an asynchronous job for archiving a team folder.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "archiveJobId",
+          "type": "String",
+          "info": "Id of the asynchronous job.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "createTeamFolder",
+      "description": "Creates a new, active, team folder.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "folderName",
+          "type": "String",
+          "info": "Name of the folder",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getTeamFoldersMetadata",
+      "description": "Retrieves metadata for team folders.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "teamFolderIds",
+          "type": "Array",
+          "info": "The list of team folder IDs.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getTeamFolders",
+      "description": "Lists all team folders.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "limit",
+          "type": "Number",
+          "info": "The maximum number of results to return per request. The default for this field is 1000.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "deleteArchivedFolder",
+      "description": "Permanently deletes an archived team folder.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "teamFolderId",
+          "type": "String",
+          "info": "The ID of the team folder.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "renameTeamFolder",
+      "description": "Changes an active team folder's name.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "teamFolderId",
+          "type": "String",
+          "info": "The ID of the team folder.",
+          "required": true
+        },
+        {
+          "name": "teamFolderName",
+          "type": "String",
+          "info": "The new name of the team folder.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getAuthenticatedAdmin",
+      "description": "Returns the member profile of the admin who generated the team access token used to make the call.",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "permanentlyDelete",
+      "description": "Permanently delete the file or folder at a given path ",
+      "args": [
+        {
+          "name": "accessToken",
+          "type": "String",
+          "info": "Access token from Dropbox",
+          "required": true
+        },
+        {
+          "name": "path",
+          "type": "String",
+          "info": "Path in the user's Dropbox to delete.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    }
+  ]
+}
