@@ -867,7 +867,7 @@
           "name": "keepAppFolder",
           "type": "Boolean",
           "info": "Whether to keep the application dedicated folder (in case the application uses one) The default for this field is True.",
-          "required": true
+          "required": false
         }
       ],
       "callbacks": [
@@ -1659,7 +1659,7 @@
           "name": "forceAsyncOff",
           "type": "Boolean",
           "info": "Whether to force the archive to happen synchronously. The default for this field is False.",
-          "required": true
+          "required": false
         }
       ],
       "callbacks": [
