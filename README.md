@@ -2,7 +2,7 @@
 
 # DropboxBusiness Package
 DropboxBusiness
-* Domain: dropbox.com
+* Domain: [Dropbox](http://dropbox.com/) 
 * Credentials: apiKey
 
 ## How to get credentials: 
