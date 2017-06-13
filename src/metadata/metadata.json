@@ -349,7 +349,8 @@
         },
         {
           "name": "groupManagementType",
-          "type": "String",
+          "type": "Select",
+          "options":["user_managed", "company_managed", "system_managed"],
           "info": "Whether the team can be managed by selected users, or only by team admins. Possible values: user_managed, company_managed, system_managed.",
           "required": false
         }
@@ -433,7 +434,12 @@
         },
         {
           "name": "groupIds",
-          "type": "Array",
+          "type": "List",
+          "structure": {
+            "name": "groupId",
+            "type": "String",
+            "info": "Single groupId"
+          },
           "info": "External IDs of groups.",
           "required": true
         }
@@ -551,7 +557,8 @@
         },
         {
           "name": "memberIdType",
-          "type": "String",
+          "type": "Select",
+          "options":["team_member_id", "external_id", "email"],
           "info": "Type of user id. Possible values: team_member_id, external_id, email.",
           "required": true
         },
@@ -563,7 +570,8 @@
         },
         {
           "name": "accessType",
-          "type": "String",
+          "type": "Select",
+          "options":["member", "owner"],
           "info": "Access type. Possible values: member, owner.",
           "required": true
         }
@@ -659,7 +667,12 @@
         },
         {
           "name": "users",
-          "type": "Array",
+          "type": "List",
+          "structure": {
+            "name": "user",
+            "type": "String",
+            "info": "Single user"
+          },
           "info": "List of users to be removed from the group. Example [{\".tag\" : \"email\", \"email\" : \"justin@emaple.com\" }] ",
           "required": true
         },
@@ -699,7 +712,8 @@
         },
         {
           "name": "memberIdType",
-          "type": "String",
+          "type": "Select",
+          "options":["team_member_id", "external_id", "email"],
           "info": "Type of user id. Possible values: team_member_id, external_id, email.",
           "required": true
         },
@@ -711,7 +725,8 @@
         },
         {
           "name": "accessType",
-          "type": "String",
+          "type": "Select",
+          "options":["member", "owner"],
           "info": "Access type. Possible values: member, owner.",
           "required": true
         },
@@ -763,7 +778,8 @@
         },
         {
           "name": "newGroupManagementType",
-          "type": "String",
+          "type": "Select",
+          "options":["user_managed", "company_managed", "system_managed"],
           "info": "Whether the team can be managed by selected users, or only by team admins. Possible values: user_managed, company_managed, system_managed.",
           "required": false
         },
@@ -957,7 +973,8 @@
         },
         {
           "name": "memberRole",
-          "type": "String",
+          "type": "Select",
+          "options":["member_only", "support_admin", "user_management_admin", "team_admin"],
           "info": "Describes which team-related admin permissions a user has. Possible values: member_only(default), support_admin, user_management_admin, team_admin",
           "required": false
         },
@@ -1053,7 +1070,12 @@
         },
         {
           "name": "members",
-          "type": "Array",
+          "type": "List",
+          "structure": {
+            "name": "member",
+            "type": "JSON",
+            "info": "Single member"
+          },
           "info": "Example: [{\".tag\": \"team_member_id\",\"team_member_id\": \"dbmid:efgh5678\"}]",
           "required": true
         }
@@ -1081,7 +1103,8 @@
         },
         {
           "name": "memberIdType",
-          "type": "String",
+          "type": "Select",
+          "options":["team_member_id", "external_id", "email"],
           "info": "Argument for selecting a single user, either by team_member_id, external_id or email.",
           "required": true
         },
@@ -1143,7 +1166,8 @@
         },
         {
           "name": "memberIdType",
-          "type": "String",
+          "type": "Select",
+          "options":["team_member_id", "external_id", "email"],
           "info": "Argument for selecting a single user, either by team_member_id, external_id or email.",
           "required": true
         },
@@ -1177,7 +1201,8 @@
         },
         {
           "name": "memberIdType",
-          "type": "String",
+          "type": "Select",
+          "options":["team_member_id", "external_id", "email"],
           "info": "Argument for selecting a single user, either by team_member_id, external_id or email.",
           "required": true
         },
@@ -1189,7 +1214,8 @@
         },
         {
           "name": "destinationMemberIdType",
-          "type": "String",
+          "type": "Select",
+          "options":["team_member_id", "external_id", "email"],
           "info": "Argument for selecting a single user, either by team_member_id, external_id or email.",
           "required": false
         },
@@ -1201,7 +1227,8 @@
         },
         {
           "name": "adminMemberIdType",
-          "type": "String",
+          "type": "Select",
+          "options":["team_member_id", "external_id", "email"],
           "info": "Argument for selecting a single user, either by team_member_id, external_id or email.",
           "required": false
         },
@@ -1275,7 +1302,8 @@
         },
         {
           "name": "memberIdType",
-          "type": "String",
+          "type": "Select",
+          "options":["team_member_id", "external_id", "email"],
           "info": "Argument for selecting a single user, either by team_member_id, external_id or email.",
           "required": true
         },
@@ -1309,7 +1337,8 @@
         },
         {
           "name": "memberIdType",
-          "type": "String",
+          "type": "Select",
+          "options":["team_member_id", "external_id", "email"],
           "info": "Argument for selecting a single user, either by team_member_id, external_id or email.",
           "required": true
         },
@@ -1321,7 +1350,8 @@
         },
         {
           "name": "newRole",
-          "type": "String",
+          "type": "Select",
+          "options":["team_admin", "user_management_admin", "support_admin", "member_only"],
           "info": "Describes which team-related admin permissions a user has. Possible values: team_admin, user_management_admin, support_admin, member_only",
           "required": true
         }
@@ -1349,7 +1379,8 @@
         },
         {
           "name": "memberIdType",
-          "type": "String",
+          "type": "Select",
+          "options":["team_member_id", "external_id", "email"],
           "info": "Argument for selecting a single user, either by team_member_id, external_id or email.",
           "required": true
         },
@@ -1413,7 +1444,8 @@
         },
         {
           "name": "memberIdType",
-          "type": "String",
+          "type": "Select",
+          "options":["team_member_id", "external_id", "email"],
           "info": "Argument for selecting a single user, either by team_member_id, external_id or email.",
           "required": true
         },
@@ -1453,7 +1485,8 @@
         },
         {
           "name": "memberIdType",
-          "type": "String",
+          "type": "Select",
+          "options":["team_member_id", "external_id", "email"],
           "info": "Argument for selecting a single user, either by team_member_id, external_id or email.",
           "required": true
         },
@@ -1487,13 +1520,13 @@
         },
         {
           "name": "startDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Timestamp(format=\"%Y-%m-%d\")? Optional starting date (inclusive)",
           "required": false
         },
         {
           "name": "endDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Timestamp(format=\"%Y-%m-%d\")? Optional ending date (exclusive) ",
           "required": false
         }
@@ -1521,13 +1554,13 @@
         },
         {
           "name": "startDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Timestamp(format=\"%Y-%m-%d\")? Optional starting date (inclusive)",
           "required": false
         },
         {
           "name": "endDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Timestamp(format=\"%Y-%m-%d\")? Optional ending date (exclusive) ",
           "required": false
         }
@@ -1555,13 +1588,13 @@
         },
         {
           "name": "startDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Timestamp(format=\"%Y-%m-%d\")? Optional starting date (inclusive)",
           "required": false
         },
         {
           "name": "endDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Timestamp(format=\"%Y-%m-%d\")? Optional ending date (exclusive) ",
           "required": false
         }
@@ -1589,13 +1622,13 @@
         },
         {
           "name": "startDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Timestamp(format=\"%Y-%m-%d\")? Optional starting date (inclusive)",
           "required": false
         },
         {
           "name": "endDate",
-          "type": "String",
+          "type": "DatePicker",
           "info": "Timestamp(format=\"%Y-%m-%d\")? Optional ending date (exclusive) ",
           "required": false
         }
@@ -1741,7 +1774,12 @@
         },
         {
           "name": "teamFolderIds",
-          "type": "Array",
+          "type": "List",
+          "structure": {
+            "name": "teamFolderId",
+            "type": "JSON",
+            "info": "Single teamFolderId"
+          },
           "info": "The list of team folder IDs.",
           "required": true
         }

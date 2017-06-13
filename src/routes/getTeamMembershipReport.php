@@ -14,10 +14,12 @@ $app->post('/api/DropboxBusiness/getTeamMembershipReport', function ($request, $
     $query_str = $settings['api_url'] . "2/team/reports/get_membership";
     $body = array();
     if (isset($post_data['args']['startDate']) && strlen($post_data['args']['startDate']) > 0) {
-        $body['start_date'] = $post_data['args']['startDate'];
+        $dateTime = new DateTime($post_data['args']['startDate']);
+        $body['start_date'] = $dateTime->format('Y-m-d');
     }
     if (isset($post_data['args']['endDate']) && strlen($post_data['args']['endDate']) > 0) {
-        $body['end_date'] = $post_data['args']['endDate'];
+        $dateTime = new DateTime($post_data['args']['endDate']);
+        $body['end_date'] = $dateTime->format('Y-m-d');
     }
 
     //requesting remote API

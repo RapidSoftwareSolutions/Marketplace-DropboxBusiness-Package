@@ -2,14 +2,25 @@
 
 # DropboxBusiness Package
 DropboxBusiness
-* Domain: [Dropbox](http://dropbox.com/) 
+* Domain: [DropboxBusiness](http://dropbox.com)
 * Credentials: apiKey
 
+## How to get credentials: 
 ## How to get credentials: 
 0. Go to [Dropbox website](http://dropbox.com/) 
 1. Log in or create a new account
 2. [Register an app](https://www.dropbox.com/developers)
 3. After creation your app you will see api Secret and api Key
+
+## Custom datatypes: 
+ |Datatype|Description|Example
+ |--------|-----------|----------
+ |Datepicker|String which includes date and time|```2016-05-28 00:00:00```
+ |Map|String which includes latitude and longitude coma separated|```50.37, 26.56```
+ |List|Simple array|```["123", "sample"]``` 
+ |Select|String with predefined values|```sample```
+ |Array|Array of objects|```[{"Second name":"123","Age":"12","Photo":"sdf","Draft":"sdfsdf"},{"name":"adi","Second name":"bla","Age":"4","Photo":"asfserwe","Draft":"sdfsdf"}] ```
+ 
 
 ## DropboxBusiness.getAccessToken
 Generates user access token
@@ -101,7 +112,7 @@ Creates a new, empty group, with a requested name.
 | accessToken        | String| Access token from Dropbox
 | groupName          | String| Group name.
 | groupExternalId    | String| The creator of a team can associate an arbitrary external ID to the group.
-| groupManagementType| String| Whether the team can be managed by selected users, or only by team admins. Possible values: user_managed, company_managed, system_managed.
+| groupManagementType| Select| Whether the team can be managed by selected users, or only by team admins. Possible values: user_managed, company_managed, system_managed.
 
 ## DropboxBusiness.deleteGroup
 Deletes a group. The group is deleted immediately. However the revoking of group-owned resources may take additional time.
@@ -125,7 +136,7 @@ Retrieves information about several groups
 | Field      | Type  | Description
 |------------|-------|----------
 | accessToken| String| Access token from Dropbox
-| groupIds   | Array | External IDs of groups.
+| groupIds   | List  | External IDs of groups.
 
 ## DropboxBusiness.getGroupJobStatus
 Retrieves information about status of any of group job
@@ -158,9 +169,9 @@ Adds member to a group.
 |-------------|-------|----------
 | accessToken | String| Access token from Dropbox
 | groupId     | String| External ID of the group.
-| memberIdType| String| Type of user id. Possible values: team_member_id, external_id, email.
+| memberIdType| Select| Type of user id. Possible values: team_member_id, external_id, email.
 | memberId    | String| Id of the user.
-| accessType  | String| Access type. Possible values: member, owner.
+| accessType  | Select| Access type. Possible values: member, owner.
 
 ## DropboxBusiness.getGroupMembers
 Lists members of a group.
@@ -186,7 +197,7 @@ Removes members from a group..
 |--------------|--------|----------
 | accessToken  | String | Access token from Dropbox
 | groupId      | String | External ID of the group.
-| users        | Array  | List of users to be removed from the group. Example [{".tag" : "email", "email" : "justin@emaple.com" }] 
+| users        | List   | List of users to be removed from the group. Example [{".tag" : "email", "email" : "justin@emaple.com" }] 
 | returnMembers| Boolean| Whether to return the list of members in the group. Note that the default value will cause all the group members to be returned in the response. This may take a long time for large groups. The default for this field is True.
 
 ## DropboxBusiness.setGroupMemberAccessType
@@ -196,9 +207,9 @@ Sets a member's access type in a group.
 |--------------|--------|----------
 | accessToken  | String | Access token from Dropbox
 | groupId      | String | External ID of the group.
-| memberIdType | String | Type of user id. Possible values: team_member_id, external_id, email.
+| memberIdType | Select | Type of user id. Possible values: team_member_id, external_id, email.
 | memberId     | String | Id of the user.
-| accessType   | String | Access type. Possible values: member, owner.
+| accessType   | Select | Access type. Possible values: member, owner.
 | returnMembers| Boolean| Whether to return the list of members in the group. Note that the default value will cause all the group members to be returned in the response. This may take a long time for large groups. The default for this field is True.
 
 ## DropboxBusiness.updateSingleGroup
@@ -210,7 +221,7 @@ Updates a group's name and/or external ID.
 | groupId               | String | External ID of the group.
 | newGroupName          | String | New group name.
 | newGroupExternalId    | String | New arbitrary external ID to the group.
-| newGroupManagementType| String | Whether the team can be managed by selected users, or only by team admins. Possible values: user_managed, company_managed, system_managed.
+| newGroupManagementType| Select | Whether the team can be managed by selected users, or only by team admins. Possible values: user_managed, company_managed, system_managed.
 | returnMembers         | Boolean| Whether to return the list of members in the group. Note that the default value will cause all the group members to be returned in the response. This may take a long time for large groups. The default for this field is True.
 
 ## DropboxBusiness.getSingleMemberLinkedApps
@@ -259,7 +270,7 @@ Adds members to a team.
 | memberExternalId  | String | External ID for member.
 | memberPersistentId| String | Persistent ID for member. This field is only available to teams using persistent ID SAML configuration.
 | sendWelcomeEmail  | Boolean| Whether to send a welcome email to the member. If send_welcome_email is false, no email invitation will be sent to the user. This may be useful for apps using single sign-on (SSO) flows for onboarding that want to handle announcements themselves. The default for this field is True.
-| memberRole        | String | Describes which team-related admin permissions a user has. Possible values: member_only(default), support_admin, user_management_admin, team_admin
+| memberRole        | Select | Describes which team-related admin permissions a user has. Possible values: member_only(default), support_admin, user_management_admin, team_admin
 | forceAsync        | Boolean| Whether to force the add to happen asynchronously. The default for this field is False.
 
 ## DropboxBusiness.checkAddTeamMemberStatus
@@ -285,7 +296,7 @@ Returns information about multiple team members.
 | Field      | Type  | Description
 |------------|-------|----------
 | accessToken| String| Access token from Dropbox
-| members    | Array | Example: [{".tag": "team_member_id","team_member_id": "dbmid:efgh5678"}]
+| members    | List  | Example: [{".tag": "team_member_id","team_member_id": "dbmid:efgh5678"}]
 
 ## DropboxBusiness.getSingleTeamMemberInfo
 Returns information about single team member.
@@ -293,7 +304,7 @@ Returns information about single team member.
 | Field       | Type  | Description
 |-------------|-------|----------
 | accessToken | String| Access token from Dropbox
-| memberIdType| String| Argument for selecting a single user, either by team_member_id, external_id or email.
+| memberIdType| Select| Argument for selecting a single user, either by team_member_id, external_id or email.
 | memberId    | String| Id of the user.
 
 ## DropboxBusiness.paginateTeamMembers
@@ -310,7 +321,7 @@ Recover a deleted member.
 | Field       | Type  | Description
 |-------------|-------|----------
 | accessToken | String| Access token from Dropbox
-| memberIdType| String| Argument for selecting a single user, either by team_member_id, external_id or email.
+| memberIdType| Select| Argument for selecting a single user, either by team_member_id, external_id or email.
 | memberId    | String| Id of the user.
 
 ## DropboxBusiness.removeTeamMember
@@ -319,11 +330,11 @@ Removes a member from a team.
 | Field                  | Type   | Description
 |------------------------|--------|----------
 | accessToken            | String | Access token from Dropbox
-| memberIdType           | String | Argument for selecting a single user, either by team_member_id, external_id or email.
+| memberIdType           | Select | Argument for selecting a single user, either by team_member_id, external_id or email.
 | memberId               | String | Id of the user.
-| destinationMemberIdType| String | Argument for selecting a single user, either by team_member_id, external_id or email.
+| destinationMemberIdType| Select | Argument for selecting a single user, either by team_member_id, external_id or email.
 | destinationMemberId    | String | If provided, files from the deleted member account will be transferred to this user.
-| adminMemberIdType      | String | Argument for selecting a single user, either by team_member_id, external_id or email.
+| adminMemberIdType      | Select | Argument for selecting a single user, either by team_member_id, external_id or email.
 | adminMemberId          | String | If provided, errors during the transfer process will be sent via email to this user. If the destinationMemberId argument was provided, then this argument must be provided as well. 
 | wipeData               | Boolean| If provided, controls if the user's data will be deleted on their linked devices. The default for this field is True.
 | keepAccount            | Boolean| Downgrade the member to a Basic account. The user will retain the email address associated with their Dropbox account and data in their account that is not restricted to team members. In order to keep the account the argument wipeData should be set to False. The default for this field is False.
@@ -342,7 +353,7 @@ Sends welcome email to pending team member.
 | Field       | Type  | Description
 |-------------|-------|----------
 | accessToken | String| Access token from Dropbox
-| memberIdType| String| Argument for selecting a single user, either by team_member_id, external_id or email.
+| memberIdType| Select| Argument for selecting a single user, either by team_member_id, external_id or email.
 | memberId    | String| Id of the user.
 
 ## DropboxBusiness.updateTeamMemberPermissions
@@ -351,9 +362,9 @@ Updates a team member's permissions.
 | Field       | Type  | Description
 |-------------|-------|----------
 | accessToken | String| Access token from Dropbox
-| memberIdType| String| Argument for selecting a single user, either by team_member_id, external_id or email.
+| memberIdType| Select| Argument for selecting a single user, either by team_member_id, external_id or email.
 | memberId    | String| Id of the user.
-| newRole     | String| Describes which team-related admin permissions a user has. Possible values: team_admin, user_management_admin, support_admin, member_only
+| newRole     | Select| Describes which team-related admin permissions a user has. Possible values: team_admin, user_management_admin, support_admin, member_only
 
 ## DropboxBusiness.updateTeamMemberProfile
 Updates a team member's profile.
@@ -361,7 +372,7 @@ Updates a team member's profile.
 | Field             | Type  | Description
 |-------------------|-------|----------
 | accessToken       | String| Access token from Dropbox
-| memberIdType      | String| Argument for selecting a single user, either by team_member_id, external_id or email.
+| memberIdType      | Select| Argument for selecting a single user, either by team_member_id, external_id or email.
 | memberId          | String| ID of the member
 | memberEmail       | String| Member's email
 | memberGivenName   | String| Member's first name.
@@ -375,7 +386,7 @@ Suspend a member from a team.
 | Field       | Type   | Description
 |-------------|--------|----------
 | accessToken | String | Access token from Dropbox
-| memberIdType| String | Argument for selecting a single user, either by team_member_id, external_id or email.
+| memberIdType| Select | Argument for selecting a single user, either by team_member_id, external_id or email.
 | memberId    | String | ID of the member
 | wipeData    | Boolean| If provided, controls if the user's data will be deleted on their linked devices. The default for this field is True.
 
@@ -385,44 +396,44 @@ Unsuspend a member from a team.
 | Field       | Type  | Description
 |-------------|-------|----------
 | accessToken | String| Access token from Dropbox
-| memberIdType| String| Argument for selecting a single user, either by team_member_id, external_id or email.
+| memberIdType| Select| Argument for selecting a single user, either by team_member_id, external_id or email.
 | memberId    | String| ID of the member
 
 ## DropboxBusiness.getTeamUsersActivityReport
 Retrieves reporting data about a team's user activity.
 
-| Field      | Type  | Description
-|------------|-------|----------
-| accessToken| String| Access token from Dropbox
-| startDate  | String| Timestamp(format="%Y-%m-%d")? Optional starting date (inclusive)
-| endDate    | String| Timestamp(format="%Y-%m-%d")? Optional ending date (exclusive) 
+| Field      | Type      | Description
+|------------|-----------|----------
+| accessToken| String    | Access token from Dropbox
+| startDate  | DatePicker| Timestamp(format="%Y-%m-%d")? Optional starting date (inclusive)
+| endDate    | DatePicker| Timestamp(format="%Y-%m-%d")? Optional ending date (exclusive) 
 
 ## DropboxBusiness.getTeamLinkedDevicesReport
 Retrieves reporting data about a team's linked devices.
 
-| Field      | Type  | Description
-|------------|-------|----------
-| accessToken| String| Access token from Dropbox
-| startDate  | String| Timestamp(format="%Y-%m-%d")? Optional starting date (inclusive)
-| endDate    | String| Timestamp(format="%Y-%m-%d")? Optional ending date (exclusive) 
+| Field      | Type      | Description
+|------------|-----------|----------
+| accessToken| String    | Access token from Dropbox
+| startDate  | DatePicker| Timestamp(format="%Y-%m-%d")? Optional starting date (inclusive)
+| endDate    | DatePicker| Timestamp(format="%Y-%m-%d")? Optional ending date (exclusive) 
 
 ## DropboxBusiness.getTeamMembershipReport
 Retrieves reporting data about a team's membership.
 
-| Field      | Type  | Description
-|------------|-------|----------
-| accessToken| String| Access token from Dropbox
-| startDate  | String| Timestamp(format="%Y-%m-%d")? Optional starting date (inclusive)
-| endDate    | String| Timestamp(format="%Y-%m-%d")? Optional ending date (exclusive) 
+| Field      | Type      | Description
+|------------|-----------|----------
+| accessToken| String    | Access token from Dropbox
+| startDate  | DatePicker| Timestamp(format="%Y-%m-%d")? Optional starting date (inclusive)
+| endDate    | DatePicker| Timestamp(format="%Y-%m-%d")? Optional ending date (exclusive) 
 
 ## DropboxBusiness.getTeamStorageUsageReport
 Retrieves reporting data about a team's storage usage.
 
-| Field      | Type  | Description
-|------------|-------|----------
-| accessToken| String| Access token from Dropbox
-| startDate  | String| Timestamp(format="%Y-%m-%d")? Optional starting date (inclusive)
-| endDate    | String| Timestamp(format="%Y-%m-%d")? Optional ending date (exclusive) 
+| Field      | Type      | Description
+|------------|-----------|----------
+| accessToken| String    | Access token from Dropbox
+| startDate  | DatePicker| Timestamp(format="%Y-%m-%d")? Optional starting date (inclusive)
+| endDate    | DatePicker| Timestamp(format="%Y-%m-%d")? Optional ending date (exclusive) 
 
 ## DropboxBusiness.setActiveArchivedFolder
 Sets an archived team folder's status to active.
@@ -463,7 +474,7 @@ Retrieves metadata for team folders.
 | Field        | Type  | Description
 |--------------|-------|----------
 | accessToken  | String| Access token from Dropbox
-| teamFolderIds| Array | The list of team folder IDs.
+| teamFolderIds| List  | The list of team folder IDs.
 
 ## DropboxBusiness.getTeamFolders
 Lists all team folders.
