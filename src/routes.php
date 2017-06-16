@@ -1,5 +1,6 @@
        <?php
        $routes = [
+       'webhookEvent',
        'permanentlyDelete',
        'getAuthenticatedAdmin',
        'renameTeamFolder',
