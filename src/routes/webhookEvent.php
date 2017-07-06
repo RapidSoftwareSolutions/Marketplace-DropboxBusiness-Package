@@ -1,5 +1,5 @@
 <?php
-$app->post('/api/Dropbox/webhookEvent', function ($request, $response, $args) {
+$app->post('/api/DropboxBusiness/webhookEvent', function ($request, $response, $args) {
     $checkRequest = $this->validation;
     $validateRes = $checkRequest->validate($request, []);
     if (!empty($validateRes) && isset($validateRes['callback']) && $validateRes['callback'] == 'error') {
